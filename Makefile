@@ -34,15 +34,16 @@ OBJFILES=$(patsubst %.c,obj/%.o,$(SRCFILES))
 all: monminil
 
 clean:
-	$(RM) obj/*.o monminil *~
+	$(RM) obj/*.o monminil *~ *.orig
 
 monminil: $(OBJFILES)
-	$(CC) $(CFLAGS) $(OBJFILES) -o $@
+	$(CC) $(CFLAGS) $(OBJFILES) $(LDLIBS) -o $@
 
 obj/%.o: %.c  | minil.h Makefile
 	$(CC) -c $(CFLAGS) $^ -o $@ 
 
-indent:
+indent: | Makefile
+	$(ASTYLE) $(ASTYLEFLAGS) minil.h
 	$(ASTYLE) $(ASTYLEFLAGS) $(SRCFILES)
 
 ## fin fichier minil-green/Makefile

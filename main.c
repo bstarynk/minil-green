@@ -1,9 +1,13 @@
 /// fichier minil-green/main.c
 /// par Basile STARYNKEVITCH, sous licence GPLv3+ ou CeCILL
 
+
+
+#include "minil.h"
+
 // un tableau croissant de certains nombres premiers, obtenu par exemple avec
 //     /usr/games/primes 3 2147483647  | awk '($1>p+p/9){print $1, ","; p=$1}'
- const unsigned mi_tableau_premiers[] =
+const unsigned mi_tableau_premiers[] =
 {
   3, 5, 7, 11, 13, 17, 19, 23, 29, 37, 43, 53, 59, 67, 79, 89, 101, 113,
   127, 149, 167, 191, 223, 251, 281, 313, 349, 389, 433, 487, 547, 613,
@@ -30,7 +34,8 @@
 };
 
 int
-main(int argc, char**argv)
+main (int argc, char **argv)
 {
+  rl_initialize ();
 #warning a completer fonction main
-} /* fin fonction main */
+}				/* fin fonction main */

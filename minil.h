@@ -6,7 +6,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <readline/readline.h>
 
 extern const unsigned mi_tableau_premiers[];
 
-#endif /*MINIL_INCLUS*/
+#endif /*MINIL_INCLUS */

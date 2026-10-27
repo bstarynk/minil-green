@@ -10,4 +10,6 @@
 
 extern const unsigned mi_tableau_premiers[];
 
+/// renvoie un nombre premier supérieur à l'argument (ou 0 en échec):
+extern unsigned mi_premier_apres(unsigned);
 #endif /*MINIL_INCLUS */

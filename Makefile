@@ -20,7 +20,7 @@ ASTYLEFLAGS= -s2 --style=gnu
 LDLIBS= -lunistring -lreadline -ldl -lm 
 
 # les options du compilateur ; on veut le standard C99 amélioré par GCC
-CFLAGS= -std=gnu99 $(OPTIMFLAGS) $(DIAGFLAGS) $(PREPROFLAGS) -DMINIL_GITID=$$(./get-short-id.sh)
+CFLAGS= -std=gnu99 $(OPTIMFLAGS) $(DIAGFLAGS) $(PREPROFLAGS) -DMINIL_GITID=\"$$(./get-short-git.sh)\"
 # optimisation:
 OPTIMFLAGS= -g -O
 # diagnostics

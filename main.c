@@ -41,9 +41,14 @@ const unsigned mi_tableau_premiers[] =
   0
 };
 
+/// fonction pour l'aide du programme
 static void minil_green_help(const char*);
+
+/// fonction pour donner la version du programme
 static void minil_green_version(const char*);
 
+
+// donne un nom premier après l'argument.
 unsigned
 mi_premier_apres(unsigned n)
 {
@@ -65,6 +70,7 @@ mi_premier_apres(unsigned n)
   return 0;
 } /* end mi_premier_apres */
 
+//// en C main est toujours la fonction appelée en premier
 int
 main (int argc, char **argv)
 {
@@ -96,9 +102,9 @@ minil_green_help(const char*prog)
 void
 minil_green_version(const char*prog)
 {
-  printf("%s version %s (sur github.com/bstarynk/minil-green\n", prog);
-  printf("%s gitid %s\n", prog, "");
-  __FILE__, __LINE__);
+  printf("%s version %s (sur github.com/bstarynk/minil-green)\n",
+         prog, MINIL_GITID);
+  printf("%s compilé  %s\n", prog, __DATE__);
   fflush(NULL);
   exit(EXIT_SUCCESS);
 }

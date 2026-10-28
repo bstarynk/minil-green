@@ -91,7 +91,8 @@ void
 minil_green_help(const char*prog)
 {
   printf("%s est utilisable avec\n", prog);
-  printf("@@@ minil_green_help A COMPLETER %s:%d@@@@",
+#warning minil_green_help est une fonction d aide à compléter
+  printf("@@@ minil_green_help A COMPLETER %s:%d@@@@\n",
          __FILE__, __LINE__);
   fflush(NULL);
   exit(EXIT_SUCCESS);

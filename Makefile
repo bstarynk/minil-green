@@ -16,10 +16,11 @@ ASTYLEFLAGS= -s2 --style=gnu
 
 ## dépendance : GNU libunistring http://www.gnu.org/software/libunistring/
 ## dépendance : GNU readline http://www.gnu.org/software/readline
-LDLIBS= -lunistring -lreadline
+## dépendance: -ldl pour le chargement dynamique 
+LDLIBS= -lunistring -lreadline -ldl -lm 
 
 # les options du compilateur ; on veut le standard C99 amélioré par GCC
-CFLAGS= -std=gnu99 $(OPTIMFLAGS) $(DIAGFLAGS) $(PREPROFLAGS)
+CFLAGS= -std=gnu99 $(OPTIMFLAGS) $(DIAGFLAGS) $(PREPROFLAGS) -DMINIL_GITID=$$(./get-short-id.sh)
 # optimisation:
 OPTIMFLAGS= -g -O
 # diagnostics
@@ -28,7 +29,7 @@ DIAGFLAGS= -Wall -Wextra -Wmissing-prototypes
 PREPROFLAGS= -I /usr/local/include/
 
 # les fichiers sources et objets sont calculés
-SRCFILES=$(wildcard *.c)
+SRCFILES=$(wildcard [a-z]*.c)
 OBJFILES=$(patsubst %.c,obj/%.o,$(SRCFILES))
 
 all: monminil
@@ -39,8 +40,8 @@ clean:
 monminil: $(OBJFILES)
 	$(CC) $(CFLAGS) $(OBJFILES) $(LDLIBS) -o $@
 
-obj/%.o: %.c  | minil.h Makefile
-	$(CC) -c $(CFLAGS) $^ -o $@ 
+obj/%.o: %.c  minil.h | Makefile
+	$(CC) -c $(CFLAGS) $< -o $@ 
 
 indent: | Makefile
 	$(ASTYLE) $(ASTYLEFLAGS) minil.h

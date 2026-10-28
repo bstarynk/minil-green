@@ -41,6 +41,9 @@ const unsigned mi_tableau_premiers[] =
   0
 };
 
+static void minil_green_help(const char*);
+static void minil_green_version(const char*);
+
 unsigned
 mi_premier_apres(unsigned n)
 {
@@ -67,8 +70,36 @@ main (int argc, char **argv)
 {
   int n=0;
   rl_initialize ();
+  if (argc>0 && strcmp(argv[1], "--version"))
+    minil_green_version(argv[0]);
+  if (argc>0 && strcmp(argv[1], "--help"))
+    minil_green_help(argv[0]);
   if (argc>0 && (n=atoi(argv[1]))>0)
     printf("%s: après %d le nombre %d est premier ou nul\n",
            argv[0], n, (int)mi_premier_apres(n));
 #warning a completer fonction main
 }				/* fin fonction main */
+
+/// message d'aide avec --help
+void
+minil_green_help(const char*prog)
+{
+  printf("%s est utilisable avec\n", prog);
+  printf("@@@ minil_green_help A COMPLETER %s:%d@@@@",
+         __FILE__, __LINE__);
+  fflush(NULL);
+  exit(EXIT_SUCCESS);
+}
+
+
+/// message de version avec --version
+void
+minil_green_version(const char*prog)
+{
+  printf("%s version %s (sur github.com/bstarynk/minil-green\n", prog);
+  printf("%s gitid %s\n", prog, "");
+  __FILE__, __LINE__);
+  fflush(NULL);
+  exit(EXIT_SUCCESS);
+}
+

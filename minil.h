@@ -18,6 +18,8 @@
 /// une ligne de commande....  Elle est utilisée par zsh.org et GNU bash
 /// GNU readline pour une ligne de commande
 /// éditable, voir https://fr.wikipedia.org/wiki/GNU_Readline
+/// et www-ppti.ufr-info-p6.jussieu.fr/doc-online/PHP/html/book.readline.html
+/// et https://github.com/gnu-mirror-unofficial/readline/
 #include <readline/readline.h>
 
 /**

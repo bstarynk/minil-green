@@ -7,7 +7,7 @@ MD5SUM= md5sum
 # la commande pour supprimer les fichiers
 RM= rm -vf
 
-# le compilateur C
+# le compilateur C habituel de Linux voir gcc.gnu.org
 CC= gcc
 
 # l'indenteur de code ASTYLE et ses options
@@ -21,10 +21,10 @@ LDLIBS= -lunistring -lreadline -ldl -lm
 
 # les options du compilateur ; on veut le standard C99 amélioré par GCC
 CFLAGS= -std=gnu99 $(OPTIMFLAGS) $(DIAGFLAGS) $(PREPROFLAGS) -DMINIL_GITID=\"$$(./get-short-git.sh)\"
-# optimisation:
-OPTIMFLAGS= -g -O
+# optimisation: faire make OPTIMFLAGS=-O1 dès que le logiciel fonctionne
+OPTIMFLAGS= -Og
 # diagnostics
-DIAGFLAGS= -Wall -Wextra -Wmissing-prototypes
+DIAGFLAGS= -g -Wall -Wextra -Wmissing-prototypes
 # preprocesseur
 PREPROFLAGS= -I /usr/local/include/
 

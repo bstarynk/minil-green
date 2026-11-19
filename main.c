@@ -1,4 +1,6 @@
 /// fichier minil-green/main.c
+/// SPDX-License-Identifier: GPL-3.0-or-later
+/// (C) copyright © Basile Starynkevitch 2026
 /// par Basile STARYNKEVITCH, sous licence GPLv3+ ou CeCILL
 
 
@@ -75,7 +77,7 @@ int
 main (int argc, char **argv)
 {
   int n=0;
-  rl_initialize ();
+  rl_initialize ();		/* initialise la bibliothèque GNU readline */
   if (argc>0 && strcmp(argv[1], "--version"))
     minil_green_version(argv[0]);
   if (argc>0 && strcmp(argv[1], "--help"))
@@ -91,7 +93,11 @@ void
 minil_green_help(const char*prog)
 {
   printf("%s est utilisable avec\n", prog);
-#warning minil_green_help est une fonction d aide à compléter
+  printf("\t --help                    # cette aide\n");
+  printf("\t                           # £ get this help\n");
+  printf("\t --version                 # donne la version\n");
+  printf("\t --version                 # £ give version info \n");
+#warning minil_green_help est une fonction d aide "à compléter"
   printf("@@@ minil_green_help A COMPLETER %s:%d@@@@\n",
          __FILE__, __LINE__);
   fflush(NULL);

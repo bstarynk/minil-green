@@ -88,6 +88,7 @@ minil_traiter_arguments_programme (int argc, const char **argv)
   if (argc > 0 && (n = atoi (argv[1])) > 0)
     printf ("%s: après %d le nombre %d est premier ou nul\n",
             argv[0], n, (int) mi_premier_apres (n));
+#warning modifier la fonction minil_traiter_arguments_programme
 }				/* fin minil_traiter_arguments_programme */
 
 //// en C main est toujours la fonction appelée en premier

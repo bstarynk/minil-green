@@ -16,8 +16,7 @@
      | awk '($1>p+p/10){print $1, ","; p=$1}'
      | fmt | indent
 ***/
-const unsigned mi_tableau_premiers[] =
-{
+const unsigned mi_tableau_premiers[] = {
   3, 5, 7, 11, 13, 17, 19, 23, 29, 37, 41, 47, 53, 59,
   67, 79, 89, 101, 113, 127, 149, 167, 191, 211, 233, 257,
   283, 313, 347, 383, 431, 479, 541, 599, 659, 727, 809, 907, 1009, 1117,
@@ -66,9 +65,9 @@ mi_premier_apres (unsigned n)
     {
       md = (lo + hi) / 2;
       if (n < mi_tableau_premiers[md])
-        hi = md;
+	hi = md;
       else
-        lo = md;
+	lo = md;
     };
   for (md = lo; md < hi; md++)
     if (mi_tableau_premiers[md] > n)
@@ -87,8 +86,10 @@ minil_traiter_arguments_programme (int argc, const char **argv)
     minil_green_help (argv[0]);
   if (argc > 0 && (n = atoi (argv[1])) > 0)
     printf ("%s: après %d le nombre %d est premier ou nul\n",
-            argv[0], n, (int) mi_premier_apres (n));
+	    argv[0], n, (int) mi_premier_apres (n));
 #warning modifier la fonction minil_traiter_arguments_programme
+  /* prevoir de compiler avec system(3) et make(1) X-greff.c en X-greff.so */
+  /* prevoir de charger par dlopen le X-greff.so */
 }				/* fin minil_traiter_arguments_programme */
 
 //// en C main est toujours la fonction appelée en premier
@@ -123,7 +124,7 @@ void
 minil_green_version (const char *prog)
 {
   printf ("%s version %s (sur github.com/bstarynk/minil-green)\n",
-          prog, MINIL_GITID);
+	  prog, MINIL_GITID);
   printf ("%s compilé  %s\n", prog, __DATE__);
   fflush (NULL);
   exit (EXIT_SUCCESS);

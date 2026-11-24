@@ -16,6 +16,11 @@
 
 #include <stdio.h>		/* entrée sortie standard */
 #include <stdlib.h>		/* utilitaires standard divers */
+#include <unistd.h>		/* standard POSIX/Unix */
+
+#include <time.h>		/* fonctions liées au temps */
+
+#include <dlfcn.h>		/* fonctions de chargement dynamique */
 
 /// La bibliothèque GNU readline permet d'éditer et d'auto completer
 /// une ligne de commande....  Elle est utilisée par zsh.org et GNU bash

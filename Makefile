@@ -1,6 +1,6 @@
 # fichier Makefile ---- lancer "make" pour compiler
 # pour l'utilitaire `GNU make` https://www.gnu.org/software/make
-.PHONY: clean all indent
+.PHONY: clean all indent plugins
 # la commande de calcul d'empreinte (ou somme de contrôle)
 MD5SUM= md5sum
 
@@ -32,16 +32,29 @@ PREPROFLAGS= -I /usr/local/include/
 SRCFILES=$(wildcard [a-z]*.c)
 OBJFILES=$(patsubst %.c,obj/%.o,$(SRCFILES))
 
-all: monminil
+
+# les fichiers d'extensions sont chacun compilés en un greffon
+# ("plugin") chargé dynamiquement. Ils commencent chacun par X- (par
+# exemple X-truc.c)
+EXTFILES=$(wildcard X-*.c)
+PLUGINFILES=$(patsubst %.c,obj/%.so,$(EXTFILES))
+
+all: monminil greffons
 
 clean:
-	$(RM) obj/*.o monminil *~ *.orig
+	$(RM) obj/*.o monminil obj/*.so *~ *.orig
 
 monminil: $(OBJFILES)
 	$(CC) $(CFLAGS) $(OBJFILES) $(LDLIBS) -o $@
 
+greffons: $(PLUGINFILES)
+
 obj/%.o: %.c  minil.h | Makefile
-	$(CC) -c $(CFLAGS) $< -o $@ 
+	$(CC) -c $(CFLAGS) $< -o $@
+
+
+obj/X-%.so: X-%.c  minil.h | Makefile
+	$(CC) -fPIC -shared $(CFLAGS) $< -o $@ 
 
 indent: | Makefile
 	$(ASTYLE) $(ASTYLEFLAGS) minil.h

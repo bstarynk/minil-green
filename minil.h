@@ -35,6 +35,7 @@
 **/
 #include <unitypes.h>
 #include <unistr.h>
+#include <unictype.h>
 
 
 /// un tableau de nombres premiers croissants et terminé par 0
@@ -46,7 +47,7 @@ extern unsigned mi_premier_apres (unsigned);
 
 /// [dans util.c:] recherche dans une chaîne de caractères encodée
 /// UTF8 un caractère (multi-octets) bizarre ou non-imprimable (dont
-/// la tabulation), et renvoie sa position en octers, ou négatif si
+/// la tabulation), et renvoie sa position en octets, ou négatif si
 /// rien n'est trouvé
 extern int mi_position_caractere_bizarre (const char*);
 

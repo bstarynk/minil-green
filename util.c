@@ -56,5 +56,7 @@ mi_position_caractere_bizarre (const char *ch)
   return -1;
 }                               /* fin mi_position_caractere_bizarre */
 
+#warning Ecrire ici une fonction mi_compile_greffon qui compile en un greffon le fichier X-greff.c
+/* cette fonction doit utiliser system(3) */
 
 /**** fin du fichier mini-green/util.c ********/
